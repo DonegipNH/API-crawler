@@ -2,7 +2,10 @@ const puppeteer = require('puppeteer');
 
 const genkCraping = async(time) =>{
     // open browser and access to https://vnexpress.net/
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+        headless: true,
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    });
     const page = await browser.newPage();
     await page.goto('http://genk.vn/');
     console.log(`page opened`);
@@ -21,9 +24,10 @@ const genkCraping = async(time) =>{
         }
         return titleLinks;                 
     });      
-    console.log(time);
-    console.log(data);   
+    //console.log(time);
+    //console.log(data);   
     await browser.close();
+    return data;
 };    
 
 module.exports = genkCraping;

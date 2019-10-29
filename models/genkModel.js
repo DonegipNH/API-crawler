@@ -7,4 +7,4 @@ const genkSchema = new Schema({
     postedTime: {type: String, required: true}
 });
 
-module.exports = mongoose.model('restDB', genkSchema);
+module.exports = mongoose.model('genkModel', genkSchema, 'genkDB');
